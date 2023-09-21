@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  border: 1px solid black;
+  border-radius: 4px;
+  align-items: center;
+  padding: 2rem;
+  width: 40%;
+}
+
+.counter {
+  font-size: 4rem;
+}
+.label {
+  font-size: 1.3rem;
+}
+
+.green {
+  color: orange;
+}
+
+.red {
+  color: red;
+}

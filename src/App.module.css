@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 50%;
+}
+
+select {
+  width: 65%;
+  border: 1px solid rgb(205, 205, 212);
+  padding: 2px 5px;
+  border-radius: 4px;
+}
+
+.card-container {
+  display: flex;
+  gap: 1rem;
+}
