@@ -13,6 +13,8 @@ export default function App() {
   const [domainMap, setDomainMap] = useState();
 
   useEffect(() => {
+
+    //fetch all the customers list
     async function fetchCustomerList() {
       try {
         const res = await fetch(
@@ -35,6 +37,8 @@ export default function App() {
 
   async function setIndividualCustomerDetails(customerId) {
     try {
+
+      //Get the individual customer details
       const res = await fetch(`https://abnormalsecurity-public.s3.amazonaws.com/fe_dashboard/${customerId}/messages.json
         `);
 
@@ -44,6 +48,7 @@ export default function App() {
 
       const customerDetailsArray = await res.json();
 
+      //store the attack score count and attack count if attack type is SPAM
       const attackDetails = customerDetailsArray.reduce(
         (acc, el) => {
           if (el.attackScore > 0.7) {
@@ -59,6 +64,7 @@ export default function App() {
 
       const map = new Map();
 
+      //store the count of each domain in the map
       customerDetailsArray.forEach((el) => {
         const domain = el.from.split("@")[1];
 
@@ -69,6 +75,8 @@ export default function App() {
         }
       });
 
+      //set state variables for each customer, attack count and spam count
+      setSelectedCustomer(customerId);
       setHighSeverityAttackCount(attackDetails.attackCount);
       setSpamAttackCount(attackDetails.spamCount);
       setDomainMap(map);
@@ -80,13 +88,13 @@ export default function App() {
   function handleDropdownChange(e) {
     const cus = e.target.value;
 
+    //if the first option is selected, reset the values
     if (cus === "defaultValue") {
       setSelectedCustomer("");
       setHighSeverityAttackCount(0);
       setSpamAttackCount(0);
       setDomainMap(undefined);
     } else {
-      setSelectedCustomer(cus);
       setIndividualCustomerDetails(cus);
     }
   }

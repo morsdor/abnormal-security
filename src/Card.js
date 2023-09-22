@@ -2,7 +2,7 @@ import classes from "./Card.module.css";
 import { constants } from "./constants";
 
 export default function Card({ label, value }) {
-  const cardValueColor = label === constants.SPAM ? "green" : "red";
+  const cardValueColor = label === constants.SPAM ? "orange" : "red";
 
   return (
     <div className={classes.container}>

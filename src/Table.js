@@ -6,6 +6,8 @@ export default function Table({ domainMap }) {
   const [domainStatsList, setdomainStatsList] = useState([]);
 
   useEffect(() => {
+
+    //Once the domain mapping changes, create the list of each domain details
     if (domainMap) {
       const totalCount = [...domainMap.values()].reduce((acc, el) => acc + el);
 
